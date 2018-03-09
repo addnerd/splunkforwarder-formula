@@ -8,7 +8,7 @@ include:
     - directory
     - user: splunk
     - group: splunk
-    - mode: 755
+    - mode: '0400'
     - makedirs: True
     - require:
       - user: splunk
@@ -18,7 +18,7 @@ include:
     - directory
     - user: splunk
     - group: splunk
-    - mode: 500
+    - mode: '0400'
     - makedirs: True
     - require:
       - file: /opt/splunkforwarder/etc
@@ -30,7 +30,7 @@ include:
     - managed
     - user: splunk
     - group: splunk
-    - mode: {{ config.get('mode', 400) }}
+    - mode: '0400'
     - contents_pillar: splunk:certs:{{ filename }}:content
     - require:
       - file: /opt/splunkforwarder/etc/certs
@@ -41,4 +41,3 @@ include:
       - service: splunkforwarder
 
 {% endfor %}
-
