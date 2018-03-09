@@ -8,5 +8,6 @@ splunk_user:
     - home: /opt/splunkforwarder
     - groups:
       - splunk
+      - adm
     - require:
       - group: splunk_group
