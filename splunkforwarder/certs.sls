@@ -8,7 +8,7 @@ include:
     - directory
     - user: splunk
     - group: splunk
-    - mode: '0400'
+    - mode: 755
     - makedirs: True
     - require:
       - user: splunk
