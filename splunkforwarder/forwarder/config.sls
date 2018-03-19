@@ -47,3 +47,18 @@ include:
     - require:
       - pkg: splunkforwarder
       - file: /opt/splunkforwarder/etc/certs/{{ self_cert }}
+
+splunk-launch:
+  file.blockreplace:
+    - name: /opt/splunkforwarder/etc/splunk-launch.conf
+    - marker_start: "# START managed zone -DO-NOT-EDIT-"
+    - marker_end: "# END managed zone --"
+    - content: |
+         SPLUNK_OS_USER=splunk
+
+    - append_if_not_found: True
+    - show_changes: True
+    - require_in:
+      - service: splunkforwarder
+    - watch_in:
+      - service: splunkforwarder
